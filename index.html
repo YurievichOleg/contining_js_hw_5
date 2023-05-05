@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .div__style {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            align-content: center;
+            max-width: 360px;
+            border: 1px solid red;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img__style {
+            /* max-width: inherit; */
+            width: -webkit-fill-available;
+        }
+    </style>
+    <div class="content"></div>
+
+    <script src="data.js"></script>
+    <script>
+        const content = document.querySelector('.content');
+        const data = JSON.parse(dataInfo);
+
+        data.forEach(element => {
+            const dataDiv = document.createElement('div');
+            const dataHeader = document.createElement('h2');
+            const dataP = document.createElement('p');
+            const dataImg = document.createElement('img');
+
+            dataHeader.textContent = element.answer;
+            dataP.textContent = element.text;
+            dataImg.src = element.image;
+            dataImg.alt = 'photo';
+            dataImg.classList.add('img__style');
+
+            dataDiv.appendChild(dataHeader);
+            dataDiv.appendChild(dataP);
+            dataDiv.appendChild(dataImg);
+
+            dataDiv.classList.add('div__style');
+
+            content.appendChild(dataDiv);
+
+        });
+    </script>
+</body>
+
+</html>
